@@ -1,25 +1,3 @@
-def get_next_word(text, index) :
-    buf = []
-    #Stop if no following word
-    if index+1 >= len(text) or text[index+1] == '.' :
-        return ""
-    index += 1
-    while index < len(text) and str.isalnum(text[index]) :
-        buf.append(str(text[index]))
-        index += 1
-    return "".join(buf)
-
-def get_prev_word(text, index) :
-    buf = []
-    #Stop if no previous words
-    if text[index-1] == '.' :
-        return ""
-    index -= 2
-    while index > 0 and str.isalnum(text[index]) :
-        buf.insert(0, str(text[index]))
-        index -= 1
-    return "".join(buf)
-
 class NamedEntity :
     def __init__(self, name, score) :
         self.name = str(name)
@@ -27,7 +5,7 @@ class NamedEntity :
         self.len = len(self.name)
 
 class Scorekeeper :
-    def __init__(self, type_list) :
+    def __init__(self, type_list=['LOC','ORG','PER']) :
         self.dictionary = dict()
         self.max = (-1, None)
         self.total = 0.0
@@ -41,6 +19,13 @@ class Scorekeeper :
         if query in self.dictionary.keys() :
             return self.dictionary[query]
         return 0
+
+    def __eq__(self, other) :
+        ret = True
+        ret &= self.max == other.max
+        ret &= self.total == other.total
+        ret &= self.dictionary == other.dictionary
+        return ret
 
     def negative_scoring(self, correct_type, punishment) :
         for type in self.dictionary.keys() :
@@ -68,6 +53,7 @@ class Scorekeeper :
 
     def get_max_score(self) :
         return self.max[0]/self.total
+
     def get_type(self) :
         return self.max[1]
 
@@ -141,3 +127,16 @@ def merge_name_dict(dict1, dict2) :
         else :
             dict1[k] = dict2[k]
     return dict1
+
+
+def build_tok_index(tok_list) :
+    tok_index = dict()
+    for i in range(0, len(tok_list)) :
+        tok = tok_list[i]
+        if tok not in tok_index.keys() :
+            tok_index[tok] = []
+        tok_index[tok].append(i)
+    return tok_index
+
+def get_types() :
+    return ["PER", "ORG", "LOC"]

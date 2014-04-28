@@ -1,6 +1,7 @@
 from document import Document
 from helper import *
 from os import listdir
+import pickle
 import re
 from NE_Recognizer import NE_Recognizer
 from nltk import word_tokenize
@@ -8,7 +9,6 @@ from os.path import isfile, join
 
 class State :
     def __init__(self) :
-        self.ne_types = set()
         self.corpus = []
         #self.add_corpus("text_extracted")
         self.add_corpus("Raw")
@@ -41,10 +41,9 @@ class State :
         f = open("Out", "w")
         for entry in by_score :
             f.write(str(entry[0])+'\t'+str(entry[1])+'\n')
-        self.ne_r.trie_dict["The"].printme()
-        self.ne_r.trie_dict["Internal"].printme()
-        self.ne_r.trie_dict["Revenue"].printme()
 
+        with open('ne_r.pickle', 'wb') as w:
+            pickle.dump(self.ne_r, w)
 
     def get_type_and_score(self,rule) :
         if rule not in self.rules :
@@ -58,7 +57,7 @@ class State :
             name = line.strip()
             #Represent NE as a list of tokens
             name = tuple(word_tokenize(name))
-            self.ne[name] = Scorekeeper(self.ne_types)
+            self.ne[name] = Scorekeeper()
             # Put some large weight for the label since it's seed
             self.ne[name].positive_scoring(label, 99)
 
@@ -73,15 +72,12 @@ class State :
     def get_corpus(self) :
         return self.corpus
 
-    def get_ne_types(self) :
-        return list(self.ne_types)
-
     def add_candidate_rules(self, ne, rules) :
         for rule in rules :
             ne_type = self.ne[ne].get_type()
-	    ne_score = self.ne[ne].get_max_score()
+            ne_score = self.ne[ne].get_max_score()
             if rule not in self.candidate_rules.keys() :
-                self.candidate_rules[rule] = Scorekeeper(self.ne_types)
+                self.candidate_rules[rule] = Scorekeeper()
             self.candidate_rules[rule].positive_scoring(ne_type, ne_score)
 
     def promotion_filter(self, item, dictionary, threshold) :
@@ -147,7 +143,7 @@ class State :
             if len(ne) == 0 :
                 return
             if ne not in self.candidate_ne.keys() :
-                self.candidate_ne[ne] = Scorekeeper(self.ne_types)
+                self.candidate_ne[ne] = Scorekeeper()
             self.candidate_ne[ne].positive_scoring(rule_type, rule_score)
 
         def distance_close(text, l_bound, r_bound) :

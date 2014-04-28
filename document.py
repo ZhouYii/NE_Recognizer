@@ -5,20 +5,6 @@ from nltk.corpus import stopwords
 from os.path import isfile, join
 from context import Context
 from helper import *
-'''
-def detect_sentence_end(tok, sentence, context_map) :
-    When a sentence is finished, build the index from tokens to
-    sentence
-    if tok == '.' :
-        #remove duplicates
-        sentence = list(set(sentence))
-        for tok in sentence :
-            if tok not in context_map.keys() :
-                context_map[tok] = []
-            context_map[tok].append(sentence)
-        return []
-    return sentence
-'''
 
 def pass_filters(tok) :
     filters = [lambda w : w in stopwords.words('english'),  #Ignore stopwords
@@ -41,6 +27,7 @@ def init_structs(doc) :
     text = doc.text
     #Mapping from the token to the sentence contexts
     context_map = dict()
+    context_list = []
     no_punct_tok = []
 
     for sentence in sentence_list :
@@ -49,11 +36,12 @@ def init_structs(doc) :
         tok_list = [w for w in tok_list if pass_filters(w)]
         no_punct_tok.extend(tok_list)
         context = Context(tok_list)
+        context_list.append(context)
         for tok in tok_list :
             if tok not in context_map.keys() :
                 context_map[tok] = []
             context_map[tok].append(context)
-    return context_map, no_punct_tok
+    return context_map, no_punct_tok, context_list
 
 class Document :
     #Static alloc
@@ -64,7 +52,7 @@ class Document :
         self.tokens = word_tokenize(self.text)
         #Split sentences and remove terminating period
         self.sentences = [s[:len(s)-1] for s in Document.sent_chunker.tokenize(self.text)]
-        self.tok_index, self.tokens_nopunct = init_structs(self)
+        self.tok_index, self.tokens_nopunct, self.context_list = init_structs(self)
         self.tokens_nopunct = [t for t in self.tokens_nopunct if t.lower() not in stopwords.words('english')]
         #self.num_tok = len(self.tokens)
         f.close()
@@ -86,6 +74,15 @@ class Document :
         #Stub
         return []
 
+    def find_rules(self, ne) :
+        if len(ne) == 0 or not self.has_token(ne[0]) :
+            return []
+        candidates = []
+        for context in self.tok_index[ne[0]] :
+            rules = context.generate_rules(ne)
+            if rules != None or len(rules) > 0 :
+                candidates.extend(rules)
+        return candidates
 
     def find_ne_tok(self, rule) :
         ''' Rule is a 2-ple, each element is a list of tokens for the

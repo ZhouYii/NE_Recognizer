@@ -1,11 +1,5 @@
-def build_tok_index(tok_list) :
-    tok_index = dict()
-    for i in range(0, len(tok_list)) :
-        tok = tok_list[i]
-        if tok not in tok_index.keys() :
-            tok_index[tok] = []
-        tok_index[tok].append(i)
-    return tok_index
+from rule import *
+
 
 class Context :
     ''' Represents some definition of context to search for NE and rules(such as sentence)'''
@@ -43,17 +37,24 @@ class Context :
         return candidates
 
     #Rule generating functions
-    def rules_b1f1(self, index, ne) :
+    def rule_windows(self, index, ne, fwd_window=1, rev_window=1) :
         ''' Index is the index starting with NE's first token.
         Returns a rule using one token in front and one token in back'''
-        fwd_index = index+len(ne)
-        rev_index = index - 1
-        if self.valid_index(fwd_index) and self.valid_index(rev_index) :
-            #Return a 2-ple, where each element is a tuple
-            #tuple, simply to make extension to multi-word rules easy.
-            #not list because list is not hashable
-            return ((self[rev_index]), (self[fwd_index]))
-        return None
+        r = Rule()
+        if fwd_window > 0 :
+            fwd_index = index+len(ne)+fwd_window
+            if self.valid_index(fwd_index) :
+                r.fwd_window = self.tok_list[index+len(ne):fwd_index]
+            else :
+                return None
+
+        if rev_window > 0 :
+            rev_index = index - rev_window
+            if self.valid_index(rev_index) :
+                r.rev_window = self.tok_list[rev_index:index]
+            else :
+                return None
+        return r
     
     #NE generating functions
     def extract_ne(self, start_index, end_index) :
@@ -80,13 +81,13 @@ class Context :
 
     def generate_rules(self, named_entity) :
         result = []
-        matches = context.match(list(named_entity))
+        matches = self.match(list(named_entity))
         '''Filter context based on further tokens in the entity
         name. The matches list will have no indicies if there are
         no hits for the entire NE'''
         for index in matches :
             #Can call various functions to populate rules
-            b1f1_rule = self.rules_b1f1(index, named_entity)
-            if b1f1_rule != None :
-                result.append(b1f1_rule)
+            r = self.rule_windows(index, named_entity)
+            if r != None :
+                result.append(r)
         return result

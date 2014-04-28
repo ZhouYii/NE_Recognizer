@@ -1,0 +1,31 @@
+SAN FRANCISCO  The antivirus industry has a dirty little secret: its products are often not very good at stopping viruses.
+
+Consumers and businesses spend billions of dollars every year on antivirus software. But these programs rarely, if ever, block freshly minted computer viruses, experts say, because the virus creators move too quickly. That is prompting start-ups and other companies to get creative about new approaches to computer security.
+
+The bad guys are always trying to be a step ahead, said Matthew D. Howard, a venture capitalist at Norwest Venture Partners who previously set up the security strategy at Cisco Systems. And it doesnt take a lot to be a step ahead.
+
+Computer viruses used to be the domain of digital mischief makers. But in the mid-2000s, when criminals discovered that malicious software could be profitable, the number of new viruses began to grow exponentially.
+
+In 2000, there were fewer than a million new strains of malware, most of them the work of amateurs. By 2010, there were 49 million new strains, according to AV-Test, a German research institute that tests antivirus products.
+
+The antivirus industry has grown as well, but experts say it is falling behind. By the time its products are able to block new viruses, it is often too late. The bad guys have already had their fun, siphoning out a companys trade secrets, erasing data or emptying a consumers bank account.
+
+A new study by Imperva, a data security firm in Redwood City, Calif., and students from the Technion-Israel Institute of Technology is the latest confirmation of this. Amichai Shulman, Impervas chief technology officer, and a group of researchers collected and analyzed 82 new computer viruses and put them up against more than 40 antivirus products, made by top companies like Microsoft, Symantec, McAfee and Kaspersky Lab. They found that the initial detection rate was less than 5 percent.
+
+On average, it took almost a month for antivirus products to update their detection mechanisms and spot the new viruses. And two of the products with the best detection rates  Avast and Emsisoft  are available free; users are encouraged to pay for additional features. This despite the fact that consumers and businesses spent a combined $7.4 billion on antivirus software last year  nearly half of the $17.7 billion spent on security software in 2011, according to Gartner.
+
+Existing methodologies weve been protecting ourselves with have lost their efficacy, said Ted Schlein, a security-focused investment partner at Kleiner Perkins Caufield & Byers. This study is just another indicator of that. But the whole concept of detecting what is bad is a broken concept.
+
+Part of the problem is that antivirus products are inherently reactive. Just as medical researchers have to study a virus before they can create a vaccine, antivirus makers must capture a computer virus, take it apart and identify its signature  unique signs in its code  before they can write a program that removes it.
+
+That process can take as little as a few hours or as long as several years. In May, researchers at Kaspersky Lab discovered Flame, a complex piece of malware that had been stealing data from computers for an estimated five years.
+
+Mikko H. Hypponen, chief researcher at F-Secure, called Flame a spectacular failure for the antivirus industry. We really should have been able to do better, he wrote in an essay for Wired.com after Flames discovery. But we didnt. We were out of our league in our own game.
+
+Symantec and McAfee, which built their businesses on antivirus products, have begun to acknowledge their limitations and to try new approaches. The word antivirus does not appear once on their home pages. Symantec rebranded its popular antivirus packages: its consumer product is now called Norton Internet Security, and its corporate offering is now Symantec Endpoint Protection.
+
+Nobody is saying antivirus is enough, said Kevin Haley, Symantecs director of security response. Mr. Haley said Symantecs antivirus products included a handful of new technologies, like behavior-based blocking, which looks at some 30 characteristics of a file, including when it was created and where else it has been installed, before allowing it to run. In over two-thirds of cases, malware is detected by one of these other technologies, he said.
+
+Imperva, which sponsored the antivirus study, has a horse in this race. Its Web application and data security software are part of a wave of products that look at security in a new way. Instead of simply blocking what is bad, as antivirus programs and perimeter firewalls are designed to do, Imperva monitors access to servers, databases and files for suspicious activity.
+
+The day companies unplug their antivirus software is still far off, but entrepreneurs and investors are betting that the old tools will become relics.

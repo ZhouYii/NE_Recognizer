@@ -1,0 +1,35 @@
+The Food and Drug Administration announced on Monday that it had approved a new treatment for multidrug-resistant tuberculosis that can be used as an alternative when other drugs fail.
+
+The drug, to be called Sirturo, was discovered by scientists at Janssen, the pharmaceuticals unit of Johnson & Johnson, and is the first in a new class of drugs that aims to treat the drug-resistant strain of the disease.
+
+Tuberculosis is a highly infectious disease that is transmitted through the air and usually affects the lungs but can also affect other parts of the body, including the brain and kidneys. It is considered one of the worlds most serious public health threats. Although rare in the United States, multidrug-resistant tuberculosis is a growing problem elsewhere in the world, especially in poorer countries. About 12 million people worldwide had tuberculosis in 2011, according to Johnson & Johnson, and about 630,000 had multidrug-resistant TB.
+
+A study in September in The Lancet found that almost 44 percent of patients with tuberculosis in countries like Russia, Peru and Thailand showed resistance to at least one second-line drug, or a medicine used after another drug had already failed.
+
+Treating drug-resistant tuberculosis can take years and can cost 200 times as much as treating the ordinary form of the disease
+
+This is quite a milestone in the story of therapy for TB, Dr. Paul Stoffels, the chief scientific officer at Johnson & Johnson, said in an interview. He said the approval was the first time in 40 years that the agency had approved a drug that attacked tuberculosis in a different way from the current treatments on the market. Sirturo works by inhibiting an enzyme needed by the tuberculosis bacteria to replicate and spread throughout the body.
+
+Sirturo, also known as bedaquiline, would be used on top of the standard treatment, which is a combination of several drugs. Patients with drug-resistant tuberculosis often must be treated for 18 to 24 months.
+
+Even as it announced the approval, however, the F.D.A. also issued some words of caution.
+
+Multidrug-resistant tuberculosis poses a serious health threat throughout the world, and Sirturo provides much-needed treatment for patients who have dont have other therapeutic options available, Edward Cox, director of the office of antimicrobial products in the F.D.A.s center for drug evaluation and research, said in a statement. However, because the drug also carries some significant risks, doctors should make sure they use it appropriately and only in patients who dont have other treatment options.
+
+The consumer advocacy group Public Citizen opposed approval in a letter to the F.D.A. in mid-December, saying that the results of a limited clinical trial showed that patients using bedaquiline were five times as likely to die than those on the standard drug regimen to treat the disease.
+
+Given that bedaquiline belongs to an entirely new class of drugs, it is entirely feasible that death in some cases was due to some unmeasured toxicity of the drug, the letter said.
+
+Sirturo carries a so-called black box warning for patients and health care professionals that the drug can affect the hearts electrical activity, which could lead to an abnormal and potentially fatal heart rhythm. The warning also notes deaths in patients treated with Sirturo. Nine patients who received Sirturo died compared with two patients who received a placebo. Five of the deaths in the Sirturo group and all of the deaths in the placebo arm seemed to be related to tuberculosis, but no consistent reason for the deaths in the remaining Sirturo-treated patients could be identified.
+
+Doctors Without Borders and the Bill and Melinda Gates Foundation, both active in the fight against tuberculosis and other global diseases, applauded the F.D.A.s decision.
+
+Jan Gheuens, interim director of the TB Program for the Gates Foundation, called it a long-awaited event and said the fight against TB had not benefited from new drugs in the way H.I.V. had. Beyond the benefits of the drug itself, he said the quick approval process could be a model for other drugs sorely needed in the developing world.
+
+He also suggested, however, that more trials should be conducted to get a better understanding of the side effects that led to the black box warning.
+
+The F.D.A. approved bedaquiline under an accelerated program that allows the agency to conditionally approve drugs that are viewed as filling unmet medical needs with less than the usual evidence that they work. The drugs approval was based on studies that showed it killed bacteria more quickly than a control group taking the standard regimen, but it did not measure whether in the end patients actually fared better on bedaquiline. Johnson & Johnson will conduct larger clinical trials to investigate whether the drug performs as predicted.
+
+In a statement responding to Public Citizens letter, a spokeswoman for Johnson & Johnson said the company was committed to supporting appropriate use of Sirturo and would work to ensure Sirturo is used only where treatment alternatives are not available.
+
+Dr. Stoffels said the hope was that other new tuberculosis drugs would also be approved that, when used in combination with bedaquiline, could shorten and simplify the current standard of treatment. That is still a long time away, he acknowledged, but this is a first step in a new regimen for TB.

@@ -1,6 +1,6 @@
 from helper import *
 NAME_WINDOW=5
-NODE_MIN_OBSERVATIONS=4
+NODE_MIN_OBSERVATIONS=2
 class Node :
     def __init__(self, tok) :
         self.tok = tok
@@ -127,7 +127,7 @@ class NE_Recognizer :
     def extract_names(self, tok_list) :
         def merge_into_dict(src, dest) :
             for i in src :
-                name = i[1][1]
+                name = i[0]
                 score = i[1][0]
                 if not dest.has_key(name) :
                     dest[name] = score
@@ -142,6 +142,7 @@ class NE_Recognizer :
                 continue
             tok_scores = self.extract_names_(seq)
             name_dict = merge_into_dict(tok_scores, name_dict)
+        #print "name dict:"+str(name_dict.items())
         return name_dict
 
     def extract_names_(self, tok_list) :
@@ -152,15 +153,15 @@ class NE_Recognizer :
         '''
         result_set = dict()
         for i in range(0, len(tok_list)) :
-            print "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@New Iteration"
+            #print "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@New Iteration"
             if is_token_cap(tok_list[i]) :
                 tok_seq = tok_list[i:min(i+NAME_WINDOW, len(tok_list))]
                 found, score = self.extract_names_from_seq(tok_seq)
-                print "Found:"+str(found) + "score:"+str(score)
+                #print "Found:"+str(found) + "score:"+str(score)
                 #Do not give score to any 1-length tokens
                 found = [f for f in found if len(f) > 1]
                 for name in found :
-                    print "NAME:"+str(name)
+                    #print "NAME:"+str(name)
                     if not result_set.has_key(name) :
                         result_set[name] = [score, " ".join(list(name))]
                     else :
@@ -173,18 +174,19 @@ class NE_Recognizer :
         ''' Extract NE from a sequence of tokens '''
 
         def add_score(score_dict, candidate_name, other_names, total_score) :
-            print "Score Dict:"+str(score_dict.items())
-            print "Other Names:"+str(other_names)
-            print "Candidate_name"+str(candidate_name)
+            #print "Score Dict:"+str(score_dict.items())
+            #print "Other Names:"+str(other_names)
+            #print "Candidate_name"+str(candidate_name)
             if other_names == None or len(other_names) == 0 :
                 name_list = [candidate_name]
             else :
                 name_list = [candidate_name]
                 name_list.extend(other_names)
                 name_list = sorted(name_list)
-            print "Name Tuple"+str(tuple(name_list))
+            #print "Name Tuple"+str(tuple(name_list))
             #Needs to be hashable.
             name_tuple = tuple(name_list)
+            #print "Name Tuple2"+str(name_tuple)
             if score_dict.has_key(name_tuple) :
                 score_dict[name_tuple] = max(total_score, score_dict[name_tuple])
             else :
@@ -242,6 +244,8 @@ def partition_by_punct(tok_list) :
             agg = []
         else :
             agg.append(tok)
+    if len(agg) > 0 :
+        tok_chunks.append(agg)
     return tok_chunks
 
 
